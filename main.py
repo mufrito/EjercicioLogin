@@ -17,13 +17,10 @@ async def enviar_mensaje(usuario: str = Form(...), contraseña: str = Form(...))
     contraseña_correcto = "1234" 
     
     if usuario == usuario_correcto and contraseña == contraseña_correcto:
-        return RedirectResponse(url="/bienvenido", status_code=303)
+        return RedirectResponse(url=f"/bienvenido?usuario={usuario}", status_code=303)
     else:
         return RedirectResponse(url="/", status_code=303)
     
 @app.get("/bienvenido")
-async def inicio(request: Request):
-    return templates.TemplateResponse(request=request, name="bienvenido.html")
-
-
-
+async def bienvenido(request: Request, usuario: str = None): 
+    return templates.TemplateResponse(request=request, name="bienvenido.html", context={"usuario": usuario})
