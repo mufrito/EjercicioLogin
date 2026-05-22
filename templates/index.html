@@ -3,36 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buzón de Mensajes</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>Inicio de Sesión</title>
 </head>
 <body>
-    <nav>
-        <a href="/">📮 Buzón</a>
-        <a href="/muro">📜 Muro</a>
-    </nav>
+    <h2>Iniciar Sesión</h2>
+    
+    <form action="/enviar" method="POST">
+        <label for="usuario">Usuario:</label><br>
+        
+        <input type="text" id="usuario" name="usuario" required><br><br>
 
-    <main>
-        <h1>📮 Deja tu mensaje</h1>
-        <p class="subtitulo">Escribe algo y lo verás en el muro.</p>
+        <label for="contraseña">Contraseña:</label><br>
+        
+        <input type="password" id="contraseña" name="contraseña" required><br><br>
 
-        <div class="card">
-            <form action="/enviar" method="POST">
-                <label for="autor">Tu nombre</label>
-                <input type="text" id="autor" name="autor" required
-                       placeholder="¿Quién eres?">
-
-                <label for="mensaje">Tu mensaje</label>
-                <textarea id="mensaje" name="mensaje" required
-                          placeholder="¿Qué quieres decir?" rows="4"></textarea>
-
-                <button type="submit" class="btn-enviar">📨 Enviar al muro</button>
-            </form>
-        </div>
-    </main>
-
-    <footer>
-        <p>© {{ ano_actual }} — Buzón de Mensajes</p>
-    </footer>
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>
